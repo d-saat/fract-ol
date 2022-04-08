@@ -6,7 +6,7 @@
 /*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/16 16:43:06 by dsaat         #+#    #+#                 */
-/*   Updated: 2022/04/08 16:47:38 by dsaat         ########   odam.nl         */
+/*   Updated: 2022/04/08 17:19:45 by dsaat         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	render(t_frctl *frctl)
 {	
 	if (frctl->animated == 1)
 	{
-		if (frctl->maxiterations > 3500)
+		if (frctl->maxiterations > 5500)
 			frctl->animated = (frctl->animated + 1) % 3;
 		else if (frctl->maxiterations > 500)
 			frctl->maxiterations += 50;
