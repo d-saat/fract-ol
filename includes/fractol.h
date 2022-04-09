@@ -6,7 +6,7 @@
 /*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/16 16:42:54 by dsaat         #+#    #+#                 */
-/*   Updated: 2022/04/08 15:54:27 by dsaat         ########   odam.nl         */
+/*   Updated: 2022/04/09 14:16:18 by dsaat         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <unistd.h>
 # include <math.h>
 
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 600
+# define HEIGHT 600
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 # define LEFT_ARROW 123

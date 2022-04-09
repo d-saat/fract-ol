@@ -6,7 +6,7 @@
 /*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/16 16:43:06 by dsaat         #+#    #+#                 */
-/*   Updated: 2022/04/08 17:19:45 by dsaat         ########   odam.nl         */
+/*   Updated: 2022/04/09 14:10:02 by dsaat         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,29 @@ static int	render(t_frctl *frctl)
 {	
 	if (frctl->animated == 1)
 	{
-		if (frctl->maxiterations > 5500)
+		if (frctl->maxiterations > 7500)
 			frctl->animated = (frctl->animated + 1) % 3;
+		else if (frctl->maxiterations > 2500)
+			frctl->maxiterations += 200;
 		else if (frctl->maxiterations > 500)
 			frctl->maxiterations += 50;
-		else
+		else if (frctl->maxiterations > 35)
 			frctl->maxiterations += 10;
+		else
+			frctl->maxiterations += 1;
 	}
 	else if (frctl->animated == 2)
 	{
 		if (frctl->maxiterations < 10)
 			frctl->animated = (frctl->animated + 2) % 3;
+		else if (frctl->maxiterations > 2500)
+			frctl->maxiterations -= 200;
 		else if (frctl->maxiterations > 500)
 			frctl->maxiterations -= 50;
-		else if (frctl->maxiterations < 50)
-			frctl->maxiterations -= 1;
-		else
+		else if (frctl->maxiterations > 35)
 			frctl->maxiterations -= 10;
+		else
+			frctl->maxiterations -= 1;
 	}
 	calculate_complex_nb(frctl);
 	return (0);

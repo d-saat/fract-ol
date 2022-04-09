@@ -6,7 +6,7 @@
 /*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/16 16:42:58 by dsaat         #+#    #+#                 */
-/*   Updated: 2022/04/08 15:52:43 by dsaat         ########   odam.nl         */
+/*   Updated: 2022/04/09 14:11:37 by dsaat         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 static void	init_julia_sets(t_frctl *frctl)
 {
-	frctl->julia_pos[0][0] = -0.79;
-	frctl->julia_pos[0][1] = 0.15;
+	frctl->julia_pos[0][0] = -0.753;
+	frctl->julia_pos[0][1] = 0.072;
 	frctl->julia_pos[1][0] = -0.162;
 	frctl->julia_pos[1][1] = 1.04;
 	frctl->julia_pos[2][0] = 0.3;
 	frctl->julia_pos[2][1] = -0.01;
 	frctl->julia_pos[3][0] = -1.476;
 	frctl->julia_pos[3][1] = 0.0;
-	frctl->julia_pos[4][0] = -0.12;
-	frctl->julia_pos[4][1] = -0.77;
+	frctl->julia_pos[4][0] = 0.23;
+	frctl->julia_pos[4][1] = 0.53;
 	frctl->julia_pos[5][0] = 0.28;
 	frctl->julia_pos[5][1] = 0.008;
 	frctl->julia.re = frctl->julia_pos[frctl->julia_set][0];
