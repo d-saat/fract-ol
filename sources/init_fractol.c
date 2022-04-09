@@ -6,7 +6,7 @@
 /*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/16 16:42:58 by dsaat         #+#    #+#                 */
-/*   Updated: 2022/04/09 14:11:37 by dsaat         ########   odam.nl         */
+/*   Updated: 2022/04/09 17:24:55 by dsaat         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	init_julia_sets(t_frctl *frctl)
 {
+	if (frctl->frctl != &iterations_julia)
+		frctl->julia_set = 0;
 	frctl->julia_pos[0][0] = -0.753;
 	frctl->julia_pos[0][1] = 0.072;
 	frctl->julia_pos[1][0] = -0.162;
@@ -38,8 +40,12 @@ void	init_frctl(t_frctl *frctl)
 	frctl->color = 0;
 	frctl->psychedelic = 0;
 	frctl->isfixed = 1;
-	frctl->animated = 0;
+	frctl->auto_iter = 0;
 	frctl->hide_help = 0;
+	frctl->zoom_in = 0;
+	frctl->zoom_out = 0;
+	frctl->auto_find = 0;
+	frctl->find_set = 0;
 }
 
 void	init_defaults(t_frctl *frctl)

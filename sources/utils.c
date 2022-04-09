@@ -6,7 +6,7 @@
 /*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 18:32:52 by dsaat         #+#    #+#                 */
-/*   Updated: 2022/04/08 13:15:36 by dsaat         ########   odam.nl         */
+/*   Updated: 2022/04/09 17:06:28 by dsaat         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static char	*strjoin(char *s1, char *s2)
 	if (!s1 || !s2)
 		return (NULL);
 	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!str)
+		return (NULL);
 	i = 0;
 	while (s1[i])
 	{
@@ -66,5 +68,7 @@ char	*ftoa(double nb)
 	str[0] = '.';
 	str = strjoin(str_d, str);
 	str = strjoin(str, str_f);
+	if (!str)
+		return (NULL);
 	return (str);
 }

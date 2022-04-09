@@ -6,7 +6,7 @@
 #    By: dsaat <dsaat@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/03/16 16:43:18 by dsaat         #+#    #+#                  #
-#    Updated: 2022/04/08 12:13:37 by dsaat         ########   odam.nl          #
+#    Updated: 2022/04/09 15:57:12 by dsaat         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRCS_LIST = \
 	mouse_events.c\
 	pixel_color.c\
 	utils.c\
-	help.c
+	help.c\
+	render.c
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_LIST))
 OBJS = $(SRCS:.c=.o)
 LIBS = -L ./minilibx -lmlx -L ./Libft -l ft

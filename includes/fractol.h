@@ -6,7 +6,7 @@
 /*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/16 16:42:54 by dsaat         #+#    #+#                 */
-/*   Updated: 2022/04/09 14:16:18 by dsaat         ########   odam.nl         */
+/*   Updated: 2022/04/09 17:27:31 by dsaat         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,20 @@
 # define ONE 18
 # define TWO 19
 # define THREE 20
+// # define FOUR 21
+// # define FIVE 23
+// # define SIX 22
+// # define SEVEN 26
+// # define EIGHT 29
 # define P 35
 # define R 15
 # define C 8
 # define H 4
 # define A 0
+# define Z 6
+# define X 7
+# define F 3
+# define G 5
 
 typedef struct s_mlx
 {
@@ -70,14 +79,19 @@ typedef struct s_frctl
 	t_complex	factor;
 	t_complex	c;
 	t_complex	julia;
+	t_complex	pos;
 	double		julia_pos[6][2];
 	int			julia_set;
 	int			maxiterations;
 	int			color;
 	int			isfixed;
-	int			animated;
+	int			auto_iter;
 	int			hide_help;
 	int			psychedelic;
+	int			zoom_in;
+	int			zoom_out;
+	int			auto_find;
+	int			find_set;
 	int			(*frctl)(struct s_frctl*);
 	void		(*color_function)(struct s_frctl*, int, int, int);
 }				t_frctl;
@@ -97,6 +111,7 @@ int		mouse_zoom(int button, int x, int y, t_frctl *frctl);
 int		mouse_move_julia(int x, int y, t_frctl *frctl);
 int		keypress(int keycode, t_frctl *frctl);
 
+int		render(t_frctl *frctl);
 void	help(t_frctl *frctl);
 char	*ftoa(double nb);
 

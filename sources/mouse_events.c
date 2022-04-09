@@ -6,7 +6,7 @@
 /*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/16 16:43:22 by dsaat         #+#    #+#                 */
-/*   Updated: 2022/04/09 14:20:29 by dsaat         ########   odam.nl         */
+/*   Updated: 2022/04/09 14:59:01 by dsaat         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ int	mouse_move_julia(int x, int y, t_frctl *frctl)
 		frctl->julia.re = frctl->min.re + x * frctl->factor.re;
 		frctl->julia.im = frctl->min.im + y * frctl->factor.im;
 		calculate_complex_nb(frctl);
+	}
+	if (frctl->isfixed % 2 == 1)
+	{
+		frctl->pos.re = frctl->min.re + x * frctl->factor.re;
+		frctl->pos.im = frctl->min.im + y * frctl->factor.im;
 	}
 	return (0);
 }

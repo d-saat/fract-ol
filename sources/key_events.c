@@ -6,7 +6,7 @@
 /*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/16 16:43:02 by dsaat         #+#    #+#                 */
-/*   Updated: 2022/04/08 16:40:40 by dsaat         ########   odam.nl         */
+/*   Updated: 2022/04/09 17:28:19 by dsaat         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,21 @@ static void	more_keypress(int keycode, t_frctl *frctl)
 		else
 			frctl->color_function = &pixel_color;
 	}
-	if (keycode == A)
+	else if (keycode == A)
 	{
-		if (frctl->animated == 1)
-			frctl->animated = (frctl->animated + 2) % 3;
+		if (frctl->auto_iter == 1)
+			frctl->auto_iter = (frctl->auto_iter + 2) % 3;
 		else
-			frctl->animated = (frctl->animated + 1) % 3;
+			frctl->auto_iter = (frctl->auto_iter + 1) % 3;
 	}
+	else if (keycode == Z)
+		frctl->zoom_in = (frctl->zoom_in + 1) % 2;
+	else if (keycode == X)
+		frctl->zoom_out = (frctl->zoom_out + 1) % 2;
+	else if (keycode == F)
+		frctl->auto_find = (frctl->auto_find + 1) % 5;
+	else if (keycode == G && frctl->auto_find > 0)
+		frctl->auto_find -= 1;
 }
 
 int	keypress(int keycode, t_frctl *frctl)
