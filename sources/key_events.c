@@ -70,19 +70,32 @@ static void	more_keypress(int keycode, t_frctl *frctl)
 	}
 	else if (keycode == A)
 	{
-		if (frctl->auto_iter == 1)
-			frctl->auto_iter = (frctl->auto_iter + 2) % 3;
-		else
-			frctl->auto_iter = (frctl->auto_iter + 1) % 3;
+		if (frctl->auto_iter_down == 1)
+			frctl->auto_iter_down = (frctl->auto_iter_down + 1) % 2;
+		frctl->auto_iter_up = (frctl->auto_iter_up + 1) % 2;
 	}
-	else if (keycode == Z)
+	else if (keycode == D)
+	{
+		if (frctl->auto_iter_up == 1)
+			frctl->auto_iter_up = (frctl->auto_iter_up + 1) % 2;
+		frctl->auto_iter_down = (frctl->auto_iter_down + 1) % 2;
+	}
+	else if (keycode == W)
+	{
+		if (frctl->zoom_out == 1)
+			frctl->zoom_out = (frctl->zoom_out + 1) % 2;
 		frctl->zoom_in = (frctl->zoom_in + 1) % 2;
-	else if (keycode == X)
+	}
+	else if (keycode == S)
+	{
+		if (frctl->zoom_in == 1)
+			frctl->zoom_in = (frctl->zoom_in + 1) % 2;
 		frctl->zoom_out = (frctl->zoom_out + 1) % 2;
-	else if (keycode == F)
-		frctl->auto_find = (frctl->auto_find + 1) % 5;
-	else if (keycode == G && frctl->auto_find > 0)
-		frctl->auto_find -= 1;
+	}
+	// else if (keycode == F)
+	// 	frctl->auto_find = (frctl->auto_find + 1) % 5;
+	// else if (keycode == G && frctl->auto_find > 0)
+	// 	frctl->auto_find -= 1;
 }
 
 int	keypress(int keycode, t_frctl *frctl)

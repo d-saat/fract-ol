@@ -40,7 +40,8 @@ void	init_frctl(t_frctl *frctl)
 	frctl->color = 0;
 	frctl->psychedelic = 0;
 	frctl->isfixed = 1;
-	frctl->auto_iter = 0;
+	frctl->auto_iter_up = 0;
+	frctl->auto_iter_down = 0;
 	frctl->hide_help = 0;
 	frctl->zoom_in = 0;
 	frctl->zoom_out = 0;

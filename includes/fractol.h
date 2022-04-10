@@ -19,8 +19,8 @@
 # include <unistd.h>
 # include <math.h>
 
-# define WIDTH 600
-# define HEIGHT 600
+# define WIDTH 800
+# define HEIGHT 800
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 # define LEFT_ARROW 123
@@ -39,15 +39,18 @@
 // # define SIX 22
 // # define SEVEN 26
 // # define EIGHT 29
-# define P 35
-# define R 15
-# define C 8
-# define H 4
 # define A 0
-# define Z 6
-# define X 7
-# define F 3
-# define G 5
+# define S 1
+# define D 2
+// # define F 3
+# define H 4
+// # define G 5
+# define C 8
+# define W 13
+# define R 15
+# define P 35
+// # define Z 6
+// # define X 7
 
 typedef struct s_mlx
 {
@@ -85,7 +88,8 @@ typedef struct s_frctl
 	int			maxiterations;
 	int			color;
 	int			isfixed;
-	int			auto_iter;
+	int			auto_iter_up;
+	int			auto_iter_down;
 	int			hide_help;
 	int			psychedelic;
 	int			zoom_in;

@@ -32,10 +32,13 @@ static void	auto_zoom(t_frctl *frctl)
 
 static void	auto_iter(t_frctl *frctl)
 {
-	if (frctl->auto_iter == 1)
+	if (frctl->auto_iter_up == 1)
 	{
 		if (frctl->maxiterations > 7500)
-			frctl->auto_iter = (frctl->auto_iter + 1) % 3;
+		{
+			frctl->auto_iter_up = (frctl->auto_iter_up + 1) % 2;
+			frctl->auto_iter_down = (frctl->auto_iter_down + 1) % 2;
+		}
 		else if (frctl->maxiterations > 2500)
 			frctl->maxiterations += 200;
 		else if (frctl->maxiterations > 500)
@@ -45,10 +48,13 @@ static void	auto_iter(t_frctl *frctl)
 		else
 			frctl->maxiterations += 1;
 	}
-	else if (frctl->auto_iter == 2)
+	else if (frctl->auto_iter_down == 1)
 	{
 		if (frctl->maxiterations < 10)
-			frctl->auto_iter = (frctl->auto_iter + 2) % 3;
+		{
+			frctl->auto_iter_down = (frctl->auto_iter_down + 1) % 2;
+			frctl->auto_iter_up = (frctl->auto_iter_up + 1) % 2;
+		}
 		else if (frctl->maxiterations > 2500)
 			frctl->maxiterations -= 200;
 		else if (frctl->maxiterations > 500)
@@ -60,62 +66,62 @@ static void	auto_iter(t_frctl *frctl)
 	}
 }
 
-static void	auto_find(t_frctl *frctl)
-{
-	if (frctl->auto_find == 1)
-	{
-		if (frctl->julia.re < -0.753)
-			frctl->julia.re += 0.001;
-		if (frctl->julia.re > -0.753)
-			frctl->julia.re -= 0.001;
-		if (frctl->julia.im < 0.072)
-			frctl->julia.im += 0.01;
-		if (frctl->julia.im > 0.072)
-			frctl->julia.im -= 0.01;
-	}
-	if (frctl->auto_find == 2)
-	{
-		if (frctl->julia.re < 0.23)
-			frctl->julia.re += 0.01;
-		if (frctl->julia.re > 0.23)
-			frctl->julia.re -= 0.01;
-		if (frctl->julia.im < 0.53)
-			frctl->julia.im += 0.01;
-		if (frctl->julia.im > 0.53)
-			frctl->julia.im -= 0.01;
-	}
-	if (frctl->auto_find == 3)
-	{
-		if (frctl->julia.re < 0.3)
-			frctl->julia.re += 0.001;
-		if (frctl->julia.re > 0.3)
-			frctl->julia.re -= 0.001;
-		if (frctl->julia.im < -0.01)
-			frctl->julia.im += 0.01;
-		if (frctl->julia.im > -0.01)
-			frctl->julia.im -= 0.01;
-	}
-	if (frctl->auto_find == 4)
-	{
-		if (frctl->julia.re < 0.28)
-			frctl->julia.re += 0.01;
-		if (frctl->julia.re > 0.28)
-			frctl->julia.re -= 0.01;
-		if (frctl->julia.im < 0.008)
-			frctl->julia.im += 0.001;
-		if (frctl->julia.im > 0.008)
-			frctl->julia.im -= 0.001;
-	}
-}
+// static void	auto_find(t_frctl *frctl)
+// {
+// 	if (frctl->auto_find == 1)
+// 	{
+// 		if (frctl->julia.re < -0.753)
+// 			frctl->julia.re += 0.001;
+// 		if (frctl->julia.re > -0.753)
+// 			frctl->julia.re -= 0.001;
+// 		if (frctl->julia.im < 0.072)
+// 			frctl->julia.im += 0.01;
+// 		if (frctl->julia.im > 0.072)
+// 			frctl->julia.im -= 0.01;
+// 	}
+// 	if (frctl->auto_find == 2)
+// 	{
+// 		if (frctl->julia.re < 0.23)
+// 			frctl->julia.re += 0.01;
+// 		if (frctl->julia.re > 0.23)
+// 			frctl->julia.re -= 0.01;
+// 		if (frctl->julia.im < 0.53)
+// 			frctl->julia.im += 0.01;
+// 		if (frctl->julia.im > 0.53)
+// 			frctl->julia.im -= 0.01;
+// 	}
+// 	if (frctl->auto_find == 3)
+// 	{
+// 		if (frctl->julia.re < 0.3)
+// 			frctl->julia.re += 0.001;
+// 		if (frctl->julia.re > 0.3)
+// 			frctl->julia.re -= 0.001;
+// 		if (frctl->julia.im < -0.01)
+// 			frctl->julia.im += 0.01;
+// 		if (frctl->julia.im > -0.01)
+// 			frctl->julia.im -= 0.01;
+// 	}
+// 	if (frctl->auto_find == 4)
+// 	{
+// 		if (frctl->julia.re < 0.28)
+// 			frctl->julia.re += 0.01;
+// 		if (frctl->julia.re > 0.28)
+// 			frctl->julia.re -= 0.01;
+// 		if (frctl->julia.im < 0.008)
+// 			frctl->julia.im += 0.001;
+// 		if (frctl->julia.im > 0.008)
+// 			frctl->julia.im -= 0.001;
+// 	}
+// }
 
 int	render(t_frctl *frctl)
 {	
-	if (frctl->auto_iter == 1 || frctl->auto_iter == 2)
+	if (frctl->auto_iter_up == 1 || frctl->auto_iter_down == 1)
 		auto_iter(frctl);
 	if (frctl->zoom_in == 1 || frctl->zoom_out == 1)
 		auto_zoom(frctl);
-	if (frctl->auto_find > 0)
-		auto_find(frctl);
+	// if (frctl->auto_find > 0)
+	// 	auto_find(frctl);
 	calculate_complex_nb(frctl);
 	return (0);
 }

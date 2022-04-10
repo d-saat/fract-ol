@@ -39,25 +39,27 @@ static void	help_julia(t_frctl *frctl)
 void	help(t_frctl *frctl)
 {
 	mlx_string_put(frctl->mlx.ptr, frctl->mlx.win, 10, 15, 0x444444, \
-	"switch = 1 or 2 or 3");
+	"switch    = 1 or 2 or 3");
 	mlx_string_put(frctl->mlx.ptr, frctl->mlx.win, 10, 29, 0x444444, \
-	"zoom   = mouse scroll");
+	"zoom      = mouse scroll");
 	mlx_string_put(frctl->mlx.ptr, frctl->mlx.win, 10, 43, 0x444444, \
-	"move   = arrow keys ");
+	"auto zoom = W or S ");
 	mlx_string_put(frctl->mlx.ptr, frctl->mlx.win, 10, 57, 0x444444, \
-	"detail = - or +");
+	"move      = arrow keys");
 	mlx_string_put(frctl->mlx.ptr, frctl->mlx.win, 10, 71, 0x444444, \
-	"auto   = A");
+	"iteration = - or +");
 	mlx_string_put(frctl->mlx.ptr, frctl->mlx.win, 10, 85, 0x444444, \
-	"reset  = r");
+	"auto iter = A or D");
 	mlx_string_put(frctl->mlx.ptr, frctl->mlx.win, 10, 99, 0x444444, \
-	"color  = C");
+	"reset     = r");
 	mlx_string_put(frctl->mlx.ptr, frctl->mlx.win, 10, 113, 0x444444, \
-	"trippy = P");
+	"color     = C");
 	mlx_string_put(frctl->mlx.ptr, frctl->mlx.win, 10, 127, 0x444444, \
-	"hide   = H");
+	"trippy    = P");
 	mlx_string_put(frctl->mlx.ptr, frctl->mlx.win, 10, 141, 0x444444, \
-	"exit   = ESC");
+	"hide      = H");
+	mlx_string_put(frctl->mlx.ptr, frctl->mlx.win, 10, 155, 0x444444, \
+	"exit      = ESC");
 	if (frctl->frctl == &iterations_julia)
 		help_julia(frctl);
 }
