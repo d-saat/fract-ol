@@ -44,7 +44,8 @@ static void	switch_fractol(int keycode, t_frctl *frctl)
 	{
 		if (frctl->frctl == &iterations_julia)
 			frctl->julia_set = (frctl->julia_set + 1) % 6;
-		frctl->frctl = &iterations_julia;
+		else
+			frctl->frctl = &iterations_julia;
 		frctl->julia.re = frctl->julia_pos[frctl->julia_set][0];
 		frctl->julia.im = frctl->julia_pos[frctl->julia_set][1];
 	}
@@ -52,10 +53,25 @@ static void	switch_fractol(int keycode, t_frctl *frctl)
 		frctl->frctl = &iterations_burning_ship;
 }
 
-static int	close_program(t_frctl *frctl)
+static void	more_more_keypress(int keycode, t_frctl *frctl)
 {
-	mlx_destroy_window(frctl->mlx.ptr, frctl->mlx.win);
-	exit (0);
+	if (keycode == W)
+	{
+		if (frctl->zoom_out == 1)
+			frctl->zoom_out = (frctl->zoom_out + 1) % 2;
+		frctl->zoom_in = (frctl->zoom_in + 1) % 2;
+	}
+	else if (keycode == S)
+	{
+		if (frctl->zoom_in == 1)
+			frctl->zoom_in = (frctl->zoom_in + 1) % 2;
+		frctl->zoom_out = (frctl->zoom_out + 1) % 2;
+	}
+	else if (keycode == ESC)
+	{
+		mlx_destroy_window(frctl->mlx.ptr, frctl->mlx.win);
+		exit (0);
+	}
 }
 
 static void	more_keypress(int keycode, t_frctl *frctl)
@@ -80,29 +96,13 @@ static void	more_keypress(int keycode, t_frctl *frctl)
 			frctl->auto_iter_up = (frctl->auto_iter_up + 1) % 2;
 		frctl->auto_iter_down = (frctl->auto_iter_down + 1) % 2;
 	}
-	else if (keycode == W)
-	{
-		if (frctl->zoom_out == 1)
-			frctl->zoom_out = (frctl->zoom_out + 1) % 2;
-		frctl->zoom_in = (frctl->zoom_in + 1) % 2;
-	}
-	else if (keycode == S)
-	{
-		if (frctl->zoom_in == 1)
-			frctl->zoom_in = (frctl->zoom_in + 1) % 2;
-		frctl->zoom_out = (frctl->zoom_out + 1) % 2;
-	}
-	// else if (keycode == F)
-	// 	frctl->auto_find = (frctl->auto_find + 1) % 5;
-	// else if (keycode == G && frctl->auto_find > 0)
-	// 	frctl->auto_find -= 1;
+	else
+		more_more_keypress(keycode, frctl);
 }
 
 int	keypress(int keycode, t_frctl *frctl)
 {
-	if (keycode == ESC)
-		close_program(frctl);
-	else if (keycode == LEFT_ARROW || keycode == RIGHT_ARROW || \
+	if (keycode == LEFT_ARROW || keycode == RIGHT_ARROW || \
 		keycode == DOWN_ARROW || keycode == UP_ARROW)
 		keymove(keycode, frctl);
 	else if (keycode == ONE || keycode == TWO || keycode == THREE)

@@ -34,23 +34,14 @@
 # define ONE 18
 # define TWO 19
 # define THREE 20
-// # define FOUR 21
-// # define FIVE 23
-// # define SIX 22
-// # define SEVEN 26
-// # define EIGHT 29
 # define A 0
 # define S 1
 # define D 2
-// # define F 3
 # define H 4
-// # define G 5
 # define C 8
 # define W 13
 # define R 15
 # define P 35
-// # define Z 6
-// # define X 7
 
 typedef struct s_mlx
 {
@@ -94,8 +85,6 @@ typedef struct s_frctl
 	int			psychedelic;
 	int			zoom_in;
 	int			zoom_out;
-	int			auto_find;
-	int			find_set;
 	int			(*frctl)(struct s_frctl*);
 	void		(*color_function)(struct s_frctl*, int, int, int);
 }				t_frctl;

@@ -45,8 +45,6 @@ void	init_frctl(t_frctl *frctl)
 	frctl->hide_help = 0;
 	frctl->zoom_in = 0;
 	frctl->zoom_out = 0;
-	frctl->auto_find = 0;
-	frctl->find_set = 0;
 }
 
 void	init_defaults(t_frctl *frctl)

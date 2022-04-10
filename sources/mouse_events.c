@@ -43,10 +43,7 @@ int	mouse_move_julia(int x, int y, t_frctl *frctl)
 		frctl->julia.im = frctl->min.im + y * frctl->factor.im;
 		calculate_complex_nb(frctl);
 	}
-	if (frctl->isfixed % 2 == 1)
-	{
-		frctl->pos.re = frctl->min.re + x * frctl->factor.re;
-		frctl->pos.im = frctl->min.im + y * frctl->factor.im;
-	}
+	frctl->pos.re = frctl->min.re + x * frctl->factor.re;
+	frctl->pos.im = frctl->min.im + y * frctl->factor.im;
 	return (0);
 }
