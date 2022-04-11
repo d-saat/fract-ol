@@ -85,6 +85,8 @@ typedef struct s_frctl
 	int			psychedelic;
 	int			zoom_in;
 	int			zoom_out;
+	int			x;
+	int			y;
 	int			(*frctl)(struct s_frctl*);
 	void		(*color_function)(struct s_frctl*, int, int, int);
 }				t_frctl;

@@ -43,11 +43,20 @@ static void	switch_fractol(int keycode, t_frctl *frctl)
 	else if (keycode == TWO)
 	{
 		if (frctl->frctl == &iterations_julia)
+		{
 			frctl->julia_set = (frctl->julia_set + 1) % 6;
+			frctl->julia.re = frctl->julia_pos[frctl->julia_set][0];
+			frctl->julia.im = frctl->julia_pos[frctl->julia_set][1];
+		}
 		else
+		{
 			frctl->frctl = &iterations_julia;
-		frctl->julia.re = frctl->julia_pos[frctl->julia_set][0];
-		frctl->julia.im = frctl->julia_pos[frctl->julia_set][1];
+			if (frctl->isfixed == 0)
+			{
+				frctl->julia.re = frctl->min.re + frctl->x * frctl->factor.re;
+				frctl->julia.im = frctl->min.im + frctl->y * frctl->factor.im;
+			}
+		}
 	}
 	else if (keycode == THREE)
 		frctl->frctl = &iterations_burning_ship;

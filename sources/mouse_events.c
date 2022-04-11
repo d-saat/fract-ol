@@ -45,5 +45,7 @@ int	mouse_move_julia(int x, int y, t_frctl *frctl)
 	}
 	frctl->pos.re = frctl->min.re + x * frctl->factor.re;
 	frctl->pos.im = frctl->min.im + y * frctl->factor.im;
+	frctl->x = x;
+	frctl->y = y;
 	return (0);
 }
