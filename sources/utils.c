@@ -12,75 +12,60 @@
 
 #include "libft.h"
 
-static char	*strjoin(char *s1, char *s2)
+static void	reverse(char *str, int len)
 {
-	char	*str;
-	int		i;
-	int		j;
+	int	temp;
+	int	i;
+	int	j;
 
-	if (!s1 || !s2)
-		exit(EXIT_FAILURE);
-	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!str)
-		exit(EXIT_FAILURE);
 	i = 0;
-	while (s1[i])
+	j = len - 1;
+	while (j > i)
 	{
-		str[i] = s1[i];
+		temp = str[i];
+		str[i] = str[j];
+		str[j] = temp;
+		i++;
+		j--;
+	}
+}
+
+static int	int_to_string(int nb, char *str, int zero)
+{
+	int	i;
+
+	i = 0;
+	while (nb)
+	{
+		str[i] = (nb % 10) + '0';
+		nb /= 10;
 		i++;
 	}
-	j = 0;
-	while (s2[j])
+	while (i < zero)
 	{
-		str[i] = s2[j];
+		str[i] = '0';
 		i++;
-		j++;
 	}
+	reverse(str, i);
 	str[i] = '\0';
-	free(s1);
-	free(s2);
-	return (str);
+	return (i);
 }
 
-static char	*pre_strjoin(char *s1, char *s2)
+void	ft_ftoa(float nb, char *str)
 {
-	char	*str;
-	
-	if (!s1 || !s2)
-		exit(EXIT_FAILURE);
-	str = ft_calloc(1, sizeof(char) + 1);
-	if (!str)
-		exit(EXIT_FAILURE);
-	str[0] = '.';
-	str = ft_strjoin(s1, str);
-	str = ft_strjoin(str, s2);
-	return (str);
-}
+	int	decimal;
+	int	fractional;
+	int	i;
 
-char	*ftoa(double nb)
-{
-	int		decimal;
-	int		fractional;
-	char	*str_d;
-	char	*str_f;
-	char	*str;
-
-	decimal = (int)nb;
-	str_d = ft_itoa(decimal);
-	fractional = (nb - (double)decimal) * 100;
-	if (fractional < 0)
+	if (nb < 0)
 	{
-		fractional *= -1;
-		if (decimal == 0)
-		{
-			str = ft_calloc(1, sizeof(char) + 1);
-			if (!str)
-				exit(EXIT_FAILURE);
-			str[0] = '-';
-			str_d = ft_strjoin(str, str_d);
-		}	
+		nb *= -1;
+		str[0] = '-';
+		str += 1;
 	}
-	str_f = ft_itoa(fractional);
-	str = pre_strjoin(str_d, str_f);
-	return (str);
+	decimal = (int)nb;
+	fractional = (nb - (float)decimal) * 100;
+	i = int_to_string(decimal, str, 1);
+	str[i] = '.';
+	int_to_string(fractional, str + i + 1, 2);
 }

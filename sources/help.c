@@ -14,15 +14,15 @@
 
 static void	help_julia(t_frctl *frctl)
 {
-	char	*pos_x;
-	char	*pos_y;
+	char	pos_x[20];
+	char	pos_y[20];
 
 	mlx_string_put(frctl->mlx.ptr, frctl->mlx.win, WIDTH / 2 - 50, \
 	HEIGHT - 50, 0xcccccc, "space = unlock/lock");
 	if (frctl->isfixed % 2 == 0)
 	{
-		pos_x = ftoa(frctl->julia.re);
-		pos_y = ftoa(frctl->julia.im);
+		ft_ftoa(frctl->julia.re, pos_x);
+		ft_ftoa(frctl->julia.im, pos_y);
 		mlx_string_put(frctl->mlx.ptr, frctl->mlx.win, WIDTH / 2 - 16, \
 		HEIGHT - 88, 0xcccccc, "x =");
 		mlx_string_put(frctl->mlx.ptr, frctl->mlx.win, WIDTH / 2 + 12, \
@@ -31,8 +31,6 @@ static void	help_julia(t_frctl *frctl)
 		HEIGHT - 74, 0xcccccc, "y =");
 		mlx_string_put(frctl->mlx.ptr, frctl->mlx.win, WIDTH / 2 + 12, \
 		HEIGHT - 74, 0xcccccc, pos_y);
-		free(pos_x);
-		free(pos_y);
 	}
 }
 

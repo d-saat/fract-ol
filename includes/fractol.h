@@ -108,6 +108,6 @@ int		keypress(int keycode, t_frctl *frctl);
 
 int		render(t_frctl *frctl);
 void	help(t_frctl *frctl);
-char	*ftoa(double nb);
+char	*ft_ftoa(float nb, char *str);
 
 #endif
