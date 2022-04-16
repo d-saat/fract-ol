@@ -19,10 +19,10 @@ static char	*strjoin(char *s1, char *s2)
 	int		j;
 
 	if (!s1 || !s2)
-		return (NULL);
+		exit(EXIT_FAILURE);
 	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!str)
-		return (NULL);
+		exit(EXIT_FAILURE);
 	i = 0;
 	while (s1[i])
 	{
@@ -47,10 +47,10 @@ static char	*pre_strjoin(char *s1, char *s2)
 	char	*str;
 	
 	if (!s1 || !s2)
-		return (NULL);
+		exit(EXIT_FAILURE);
 	str = ft_calloc(1, sizeof(char) + 1);
 	if (!str)
-		return (NULL);
+		exit(EXIT_FAILURE);
 	str[0] = '.';
 	str = ft_strjoin(s1, str);
 	str = ft_strjoin(str, s2);
@@ -75,7 +75,7 @@ char	*ftoa(double nb)
 		{
 			str = ft_calloc(1, sizeof(char) + 1);
 			if (!str)
-				return (NULL);
+				exit(EXIT_FAILURE);
 			str[0] = '-';
 			str_d = ft_strjoin(str, str_d);
 		}	

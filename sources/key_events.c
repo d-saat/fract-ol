@@ -79,7 +79,7 @@ static void	more_more_keypress(int keycode, t_frctl *frctl)
 	else if (keycode == ESC)
 	{
 		mlx_destroy_window(frctl->mlx.ptr, frctl->mlx.win);
-		exit (0);
+		exit (EXIT_SUCCESS);
 	}
 }
 

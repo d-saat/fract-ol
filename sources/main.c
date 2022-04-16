@@ -43,7 +43,7 @@ static void	parse_input(t_frctl *frctl, int argc, char **argv)
 
 static int	close_program(void)
 {
-	exit(0);
+	exit(EXIT_SUCCESS);
 }
 
 int	main(int argc, char **argv)
