@@ -35,7 +35,7 @@ FRAMEWORK = -framework OpenGl -framework AppKit
 INCLUDES = -I ./minilibx -I ./Libft -I ./includes
 
 all: $(NAME)
-	make graphic
+	@make graphic
 
 $(NAME): $(OBJS) minilibx/libmlx.a libft/libft.a
 	@echo "$(PURPLE) compiling fractol$(RESET)"
