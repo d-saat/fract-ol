@@ -42,6 +42,21 @@ static char	*strjoin(char *s1, char *s2)
 	return (str);
 }
 
+static char	*pre_strjoin(char *s1, char *s2)
+{
+	char	*str;
+	
+	if (!s1 || !s2)
+		return (NULL);
+	str = ft_calloc(1, sizeof(char) + 1);
+	if (!str)
+		return (NULL);
+	str[0] = '.';
+	str = ft_strjoin(s1, str);
+	str = ft_strjoin(str, s2);
+	return (str);
+}
+
 char	*ftoa(double nb)
 {
 	int		decimal;
@@ -62,19 +77,10 @@ char	*ftoa(double nb)
 			if (!str)
 				return (NULL);
 			str[0] = '-';
-			str_d = strjoin(str, str_d);
+			str_d = ft_strjoin(str, str_d);
 		}	
 	}
 	str_f = ft_itoa(fractional);
-	str = ft_calloc(1, sizeof(char) + 1);
-	if (!str)
-		return (NULL);
-	str[0] = '.';
-	str = strjoin(str_d, str);
-	if (!str)
-		return (NULL);
-	str = strjoin(str, str_f);
-	if (!str)
-		return (NULL);
+	str = pre_strjoin(str_d, str_f);
 	return (str);
 }

@@ -10,8 +10,12 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fractol
+YELLOW = \033[0;33m
+PURPLE = \033[0;35m
+GREEN = \033[0;32m
+RESET = \033[0m
 
+NAME = fractol
 SRCS_DIR = ./sources/
 SRCS_LIST = \
 	main.c\
@@ -31,17 +35,37 @@ FRAMEWORK = -framework OpenGl -framework AppKit
 INCLUDES = -I ./minilibx -I ./Libft -I ./includes
 
 all: $(NAME)
+	make graphic
 
-$(NAME):
-	$(MAKE) -C ./minilibx
-	$(MAKE) -C ./Libft
+$(NAME): $(OBJS) minilibx/libmlx.a libft/libft.a
+	@echo "$(PURPLE) compiling fractol$(RESET)"
 	$(CC) $(FLAGS) $(FRAMEWORK) $(INCLUDES) $(LIBS) $(SRCS) -o $(NAME)
+
+%.o: %.c
+	$(CC) -c $(INCLUDES) $< -o $@
+
+minilibx/libmlx.a:
+	@echo "$(YELLOW) compiling minilibx$(RESET)"
+	$(MAKE) -C ./minilibx
+
+libft/libft.a:
+	@echo "$(YELLOW) compiling libft$(RESET)"
+	$(MAKE) -C ./libft
+
+graphic:
+	@echo "$(GREEN)	    __________  ___   ________________  __ "
+	@echo "$(GREEN)	   / ____/ __ \/   | / ____/_  __/ __ \/ / "
+	@echo "$(GREEN)	  / /_  / /_/ / /| |/ /     / / / / / / /  "
+	@echo "$(GREEN)	 / __/ / _, _/ ___ / /___  / / / /_/ / /___"
+	@echo "$(GREEN)	/_/   /_/ |_/_/  |_\____/ /_/  \____/_____/$(RESET)\n"
 
 clean:
 	$(MAKE) -C ./minilibx clean
-	$(MAKE) -C ./Libft clean
+	$(MAKE) -C ./libft clean
 	rm -f $(OBJS)
+
 fclean: clean
+	$(MAKE) -C ./libft fclean
 	rm -f $(NAME)
 
 re: fclean all
