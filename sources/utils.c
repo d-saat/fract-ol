@@ -30,7 +30,7 @@ static void	reverse(char *str, int len)
 	}
 }
 
-static int	int_to_string(int nb, char *str, int zero)
+static int	int_to_string(int nb, char *str, int min_nb)
 {
 	int	i;
 
@@ -41,7 +41,7 @@ static int	int_to_string(int nb, char *str, int zero)
 		nb /= 10;
 		i++;
 	}
-	while (i < zero)
+	while (i < min_nb)
 	{
 		str[i] = '0';
 		i++;

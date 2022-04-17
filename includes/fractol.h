@@ -19,8 +19,8 @@
 # include <unistd.h>
 # include <math.h>
 
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 600
+# define HEIGHT 600
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 # define LEFT_ARROW 123
