@@ -6,7 +6,7 @@
 /*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/08 12:13:22 by dsaat         #+#    #+#                 */
-/*   Updated: 2022/04/08 16:57:50 by dsaat         ########   odam.nl         */
+/*   Updated: 2022/04/26 12:23:01 by dsaat         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	help(t_frctl *frctl)
 	mlx_string_put(frctl->mlx.ptr, frctl->mlx.win, 10, 85, 0x444444, \
 	"auto iter = A or D");
 	mlx_string_put(frctl->mlx.ptr, frctl->mlx.win, 10, 99, 0x444444, \
-	"reset     = r");
+	"reset     = R");
 	mlx_string_put(frctl->mlx.ptr, frctl->mlx.win, 10, 113, 0x444444, \
 	"color     = C");
 	mlx_string_put(frctl->mlx.ptr, frctl->mlx.win, 10, 127, 0x444444, \
