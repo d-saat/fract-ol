@@ -6,7 +6,7 @@
 #    By: dsaat <dsaat@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/03/16 16:43:18 by dsaat         #+#    #+#                  #
-#    Updated: 2022/04/09 15:57:12 by dsaat         ########   odam.nl          #
+#    Updated: 2022/04/26 13:54:19 by dsaat         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ GREEN = \033[0;32m
 RESET = \033[0m
 
 NAME = fractol
-SRCS_DIR = ./sources/
+SRCS_DIR = ./src/
 SRCS_LIST = \
 	main.c\
 	draw_fractol.c\
@@ -32,7 +32,7 @@ OBJS = $(SRCS:.c=.o)
 LIBS = -L ./minilibx -lmlx -L ./Libft -l ft
 CFLAGS = -Wall -Werror -Wextra
 FRAMEWORK = -framework OpenGl -framework AppKit
-INCLUDES = -I ./minilibx -I ./Libft -I ./includes
+INCLUDES = -I ./minilibx -I ./Libft -I ./inc
 
 all: $(NAME)
 	@make graphic
