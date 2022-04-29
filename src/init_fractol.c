@@ -38,7 +38,6 @@ void	init_frctl(t_frctl *frctl)
 	init_defaults(frctl);
 	frctl->color_function = &pixel_color;
 	frctl->color = 0;
-	frctl->psychedelic = 0;
 	frctl->isfixed = 1;
 	frctl->auto_iter_up = 0;
 	frctl->auto_iter_down = 0;
@@ -54,5 +53,5 @@ void	init_defaults(t_frctl *frctl)
 	frctl->min.im = -2.0;
 	frctl->max.im = frctl->min.im + \
 	(frctl->max.re - frctl->min.re) * HEIGHT / WIDTH;
-	frctl->maxiterations = 70;
+	frctl->maxiterations = 100;
 }

@@ -87,8 +87,7 @@ static void	more_keypress(int keycode, t_frctl *frctl)
 {
 	if (keycode == P)
 	{
-		frctl->psychedelic = (frctl->psychedelic + 1) % 2;
-		if (frctl->psychedelic == 1)
+		if (frctl->color_function == &pixel_color)
 			frctl->color_function = &pixel_color_psychedelic;
 		else
 			frctl->color_function = &pixel_color;

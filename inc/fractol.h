@@ -82,7 +82,6 @@ typedef struct s_frctl
 	int			auto_iter_up;
 	int			auto_iter_down;
 	int			hide_help;
-	int			psychedelic;
 	int			zoom_in;
 	int			zoom_out;
 	int			x;
