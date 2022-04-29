@@ -6,7 +6,7 @@
 /*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/16 16:42:58 by dsaat         #+#    #+#                 */
-/*   Updated: 2022/04/09 17:24:55 by dsaat         ########   odam.nl         */
+/*   Updated: 2022/04/29 14:52:20 by dsaat         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,5 @@ void	init_defaults(t_frctl *frctl)
 	frctl->min.im = -2.0;
 	frctl->max.im = frctl->min.im + \
 	(frctl->max.re - frctl->min.re) * HEIGHT / WIDTH;
-	frctl->maxiterations = 100;
+	frctl->maxiterations = 70;
 }

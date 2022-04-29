@@ -6,7 +6,7 @@
 /*   By: dsaat <dsaat@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/16 16:43:06 by dsaat         #+#    #+#                 */
-/*   Updated: 2022/04/09 15:58:29 by dsaat         ########   odam.nl         */
+/*   Updated: 2022/04/29 19:36:54 by dsaat         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,23 @@ static int	close_program(void)
 	exit(EXIT_SUCCESS);
 }
 
+static void	check(void *ptr)
+{
+	if (ptr == NULL)
+		exit(EXIT_FAILURE);
+}
+
 int	main(int argc, char **argv)
 {
 	t_frctl	frctl;
 
 	parse_input(&frctl, argc, argv);
-	frctl.mlx.ptr = mlx_init();
-	frctl.mlx.win = mlx_new_window(frctl.mlx.ptr, WIDTH, HEIGHT, "fractol");
-	frctl.mlx.img_ptr = mlx_new_image(frctl.mlx.ptr, WIDTH, HEIGHT);
-	frctl.img.addr = mlx_get_data_addr(frctl.mlx.img_ptr, \
-	&frctl.img.bits_per_pixel, &frctl.img.line_length, &frctl.img.endian);
+	check(frctl.mlx.ptr = mlx_init());
+	check(frctl.mlx.win = mlx_new_window(frctl.mlx.ptr, WIDTH, HEIGHT,\
+	 "fractol"));
+	check(frctl.mlx.img_ptr = mlx_new_image(frctl.mlx.ptr, WIDTH, HEIGHT));
+	check(frctl.img.addr = mlx_get_data_addr(frctl.mlx.img_ptr, \
+	&frctl.img.bits_per_pixel, &frctl.img.line_length, &frctl.img.endian));
 	init_frctl(&frctl);
 	calculate_complex_nb(&frctl);
 	mlx_hook(frctl.mlx.win, 2, 0, keypress, &frctl);
